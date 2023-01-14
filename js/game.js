@@ -1,19 +1,28 @@
 let player;
-let playerW = 40;
-let playerH = 50;
+let resident;
 let canvasH = 800;
 let canvasW = 400;
+let enemyImg;
+let playerImg;
+
+function preload(){
+    enemyImg = loadImage('img/resident.jpg');
+    playerImg = loadImage('img/player.jpg');
+}
 
 function setup(){
     createCanvas(400, 800);
-    player = new Player(canvasW/2, canvasH-playerW, playerW, playerH, canvasW);
-    player.xMax = (canvasW-playerW/2);
+    player = new Player(canvasW/2, canvasH-70, playerImg);
+    player.xMax = (canvasW-player.w);
+    resident = new Residents(enemyImg, 2);
 }
 
 function draw(){
     background(0);
     player.show();
     player.update();
+    resident.draw();
+    resident.update();
 }
 
 function keyPressed() {
@@ -26,4 +35,3 @@ function keyPressed() {
         player.left = true;
     }
 }
-  
