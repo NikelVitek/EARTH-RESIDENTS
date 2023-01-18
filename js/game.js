@@ -1,37 +1,60 @@
-let player;
-let resident;
-let canvasH = 800;
-let canvasW = 400;
-let enemyImg;
-let playerImg;
 
-function preload(){
+let enemyImg;
+let residents;
+let playerImg;
+let player;
+
+
+function preload() {
     enemyImg = loadImage('img/resident.jpg');
     playerImg = loadImage('img/player.jpg');
 }
-
-function setup(){
-    createCanvas(400, 800);
-    player = new Player(canvasW/2, canvasH-70, playerImg);
-    player.xMax = (canvasW-player.w);
-    resident = new Residents(enemyImg, 2);
+function setup() {
+  createCanvas(400, 800);
+  residents = new Residents(enemyImg, 4);
+  player = new Player(playerImg);
 }
 
-function draw(){
+function draw() {
+  background(0);
+ 
+  residents.update(player);
+  residents.draw();
+
+  player.update();
+  player.draw();
+
+  if (player.lives === 0) {
+    clear();
     background(0);
-    player.show();
-    player.update();
-    resident.draw();
-    resident.update();
+    textSize(24);
+    textAlign(CENTER);
+    text("YOU LOST", 200, 400);
+    text("Press \'R\' to restart", 200, 440);
+    noLoop();
+  }
+
 }
+
+function restart(){
+    player.setup();
+    this.setup();
+    loop();
+  }
 
 function keyPressed() {
-    if (keyCode === RIGHT_ARROW || keyCode == 88) {
-        player.left = false;
-        player.right = true;
-    }
-    else if (keyCode === LEFT_ARROW || keyCode == 90) {
-        player.right = false;
-        player.left = true;
-    }
+  if (keyCode === RIGHT_ARROW || keyCode == 88) {
+    player.moveRight();
+  } 
+  else if (keyCode === LEFT_ARROW || keyCode == 90) {
+    player.moveLeft();
+  } 
+  else if (keyCode === 32) {
+    player.shoot();
+  }
+  else if (keyCode === 82){
+    this.restart();
+}
+
+
 }
