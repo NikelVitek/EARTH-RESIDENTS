@@ -60,7 +60,7 @@ class Player {
         if (this.x <= 25) {
             this.x = 25;
         } else if(this.x > width - 25) {
-            this.x = width - 23;
+            this.x = width - 25;
         }
     }
 
@@ -112,7 +112,7 @@ class Player {
     }
 
     shoot() {
-        this.bullets.push(new PlayerBullet(this.x, this.y));
+        this.bullets.push(new PlayerBullet(this.x-2, this.y-30));
     }
 
 }
