@@ -11,7 +11,7 @@ class Bullet {
     }
 
     isOffScreen() {
-        return this.y <= 0;
+        return this.y <= 0 || this.y >= 800;
     }
 
     hasHit(player) {

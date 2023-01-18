@@ -43,13 +43,13 @@ function restart(){
   }
 
 function keyPressed() {
-  if (keyCode === RIGHT_ARROW || keyCode == 88) {
+  if (keyCode === RIGHT_ARROW || keyCode == 88 || (keyCode === 68)) {
     player.moveRight();
   } 
-  else if (keyCode === LEFT_ARROW || keyCode == 90) {
+  else if (keyCode === LEFT_ARROW || keyCode == 90 || (keyCode === 65)) {
     player.moveLeft();
   } 
-  else if (keyCode === 32) {
+  else if (keyCode === 32  || keyCode === 87) {
     player.shoot();
   }
   else if (keyCode === 82){
