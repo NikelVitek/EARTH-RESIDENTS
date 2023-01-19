@@ -39,7 +39,7 @@ class Player {
 
             if (this.ResidentHit(this.bullets[i])) {
                 this.bullets.splice(i, 1);
-                this.score += 10;
+                this.score += 100;
                 break;
             } else if (this.bullets[i].isOffScreen()) {
                 this.bullets.splice(i, 1);
@@ -97,7 +97,7 @@ class Player {
         text("SCORE", 50, 25);
 
         push();
-        fill(100, 255, 100);
+        fill(255, 255, 255);
         text(this.score, 110, 25);
         pop();
     }
